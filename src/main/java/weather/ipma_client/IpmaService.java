@@ -12,4 +12,7 @@ public interface IpmaService {
     @GET("forecast/meteorology/cities/daily/{city_id}.json")
     Call<IpmaCityForecast> getForecastForACity(@Path("city_id") int cityId);
 
+    @GET("open-data/distrits-islands.json")
+    Call<IpmaRegions> getRegions();
+
 }
