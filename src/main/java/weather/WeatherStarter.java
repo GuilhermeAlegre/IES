@@ -8,6 +8,8 @@ import weather.ipma_client.*;
 import java.util.logging.Logger;
 import java.util.List;
 
+
+
 /**
  * demonstrates the use of the IPMA API for weather forecast
  */
@@ -22,7 +24,7 @@ public class WeatherStarter {
     public static void  main(String[] args ) {
 
         String city = args[0];
-        int cityId =0 ;
+        int cityId =0;
         /*
         get a retrofit instance, loaded with the GSon lib to convert JSON into objects
          */
@@ -55,15 +57,17 @@ public class WeatherStarter {
             List<CityForecast> forecast5Days =forecast.getData();
             for (CityForecast cf : forecast5Days){
                 if (cf != null) {
-                    logger.info(String.format( "Data : %s \nTemperatura minima: %s \nTemperatura máxima: %s \nProb. Precipitação: %s\n",
+                    System.out.println(String.format( "Data : %s \nTemperatura minima: %s \nTemperatura máxima: %s \nProb. Precipitação: %s\n",
                     cf.getForecastDate(), cf.getTMin(), cf.getTMax(), cf.getPrecipitaProb()));
                 } else {
                     logger.info( "No results!");
                 }
+                logger.info("ola");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
 
     }
 }
