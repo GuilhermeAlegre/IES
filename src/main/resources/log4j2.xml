@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="warn">
     <Properties>
-        <Property name="basePath">C:\\logs</Property>
+        <Property name="basePath">logs</Property>
     </Properties>
 
     <Appenders>
-        <RollingFile name="fileLogger" fileName="${basePath}/app-info.log" filePattern="${basePath}/app-info-%d{yyyy-MM-dd}.log">
+        <RollingFile name="fileLogger" fileName="${basePath}/weather.log" filePattern="${basePath}/app-info-%d{yyyy-MM-dd}.log">
             <PatternLayout>
                 <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
             </PatternLayout>
@@ -19,7 +19,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.howtodoinjava" level="debug" additivity="true">
+        <Logger name="weather" level="debug" additivity="true">
             <appender-ref ref="fileLogger" level="debug" />
         </Logger>
         <Root level="debug" additivity="false">
