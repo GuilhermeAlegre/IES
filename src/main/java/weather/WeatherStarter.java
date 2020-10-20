@@ -5,8 +5,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import weather.ipma_client.*;
-import java.util.logging.Logger;
 import java.util.List;
+
+import org.apache.logging.log4j.*;
 
 
 
@@ -19,7 +20,7 @@ public class WeatherStarter {
     loggers provide a better alternative to System.out.println
     https://rules.sonarsource.com/java/tag/bad-practice/RSPEC-106
      */
-    private static final Logger logger = Logger.getLogger(WeatherStarter.class.getName());
+    private static final Logger logger = LogManager.getLogger(WeatherStarter.class.getName());
 
     public static void  main(String[] args ) {
 
@@ -47,6 +48,7 @@ public class WeatherStarter {
                 }
             }
         } catch (Exception ex) {
+            logger.error("Error city code");
             ex.printStackTrace();
         }
 
@@ -57,14 +59,14 @@ public class WeatherStarter {
             List<CityForecast> forecast5Days =forecast.getData();
             for (CityForecast cf : forecast5Days){
                 if (cf != null) {
-                    System.out.println(String.format( "Data : %s \nTemperatura minima: %s \nTemperatura máxima: %s \nProb. Precipitação: %s\n",
+                    logger.info(String.format( "Date : %s \nMinimum Temperature: %s Maximum Temperature: %s Precipitation: %s\n",
                     cf.getForecastDate(), cf.getTMin(), cf.getTMax(), cf.getPrecipitaProb()));
                 } else {
                     logger.info( "No results!");
                 }
-                logger.info("ola");
             }
         } catch (Exception ex) {
+            logger.error("Error forecast 5 days");
             ex.printStackTrace();
         }
 
